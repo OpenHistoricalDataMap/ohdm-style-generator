@@ -1,0 +1,24 @@
+[aeroway] {
+    [undefined] {
+        [default] {
+            useStyle = SimpleLine
+        }
+    }
+}
+[military] {
+    sameAs = aeroway
+}
+[waterway] {
+    sameAs = military
+}
+[ohdm_boundary] {
+    sameAs = aeroway
+}
+
+<SimpleLine> {
+    * {
+        stroke: blue;
+        stroke-width: 3px;
+        stroke-dasharray: 5 2;
+    }
+}

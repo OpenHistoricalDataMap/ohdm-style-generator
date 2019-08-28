@@ -1,0 +1,114 @@
+[aeroway] {
+    [undefined] {
+        [default] {
+            useStyle = SimplePolygon, SimplePoint, SimpleLine
+        }
+        [0-10] {
+            useStyle = PolygonWithStyledLabel, PointWithLabel, SpacedLineWithLabel
+        }
+    }
+    [aerodrome] {
+        [>5] {
+            useStyle = SimplePolygon, SimplePoint, SimpleLine
+        }
+        [<5] {
+            useStyle = PolygonWithStyledLabel, PointWithLabel, SpacedLineWithLabel
+        }
+    }
+}
+
+[military] {
+    sameAs = aeroway
+}
+
+[emergency] {
+    sameAs = military
+}
+
+<SimplePolygon> {
+    * {
+        fill: #000080;
+        fill-opacity: 0.5;
+        stroke: #FFFFFF;
+        stroke-width: 2;
+    }
+}
+
+<PolygonWithStyledLabel> {
+    * {
+        fill: #40FF40;
+        stroke: white;
+        stroke-width: 2;
+        label: [name];
+        font-family: Arial;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: bold;
+        font-fill: black;
+        label-anchor: 0.5 0.5;
+        label-auto-wrap: 60;
+        label-max-displacement: 150;
+    }
+}
+
+<SimplePoint> {
+    * {
+       mark: symbol(triangle);
+       mark-size: 12;
+       :mark {
+         fill: #009900;
+         fill-opacity: 0.2;
+         stroke: black;
+         stroke-width : 2px;
+       }
+    }
+}
+
+<PointWithLabel> {
+    * {
+        mark: symbol(circle);
+        mark-size: 6px;
+        label: [name];
+        font-fill: black;
+        font-family: Arial;
+        font-size: 12;
+        font-weight: bold;
+        label-anchor: 0.5 0;
+        label-offset: 0 5;
+        :mark {
+             fill: red;
+        }
+    }
+}
+
+<SpacedLineWithLabel> {
+    * {
+        stroke: symbol(circle);
+        stroke-dasharray: 4 6;
+        label: [name];
+        font-family: Arial;
+        font-weight: bold;
+        font-fill: black;
+        font-size: 10;
+        halo-color: white;
+        halo-radius: 1;
+        label-follow-line: true;
+        label-max-angle-delta: 90;
+        label-max-displacement: 400;
+        label-repeat: 150;
+        :stroke {
+             size: 4;
+             fill: #666666;
+             stroke: #333333;
+             stroke-width: 1px;
+        }
+    }
+}
+
+<SimpleLine> {
+    * {
+        stroke: blue;
+        stroke-width: 3px;
+        stroke-dasharray: 5 2;
+    }
+}
